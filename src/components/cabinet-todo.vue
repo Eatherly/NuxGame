@@ -1,6 +1,6 @@
 <template>
-  <div class="todos-container">
-    <div class="todo-list">
+  <div class="main-container">
+    <div class="todo-container">
       <div class="manual">
         <div class="filters">
           <h3>Filters&Search</h3>
@@ -51,18 +51,20 @@
         </div>
       </div>
 
-      <h3>Todo list</h3>
-      <div v-for="todo in filteredTodos" :key="todo.id" class="todo-item">
-        <input class="todos-checked" type="checkbox" @click.prevent v-model="todo.completed" />
-        <div class="todo-title">{{ todo.title }}</div>
-        <button class="todo-favourite" :class="favourites.includes(todo.id.toString()) ?  'todo-favourite-checked' : '' " @click="toggleFavorite(todo.id)">
-          <span v-if="favourites.includes(todo.id.toString())">Favourite</span>
-          <span v-else>Add to favourite</span>
-        </button>
+      <div class="todo-block">
+        <h3>Todo list</h3>
+        <div v-for="todo in filteredTodos" :key="todo.id" class="todo-item">
+          <input class="todos-checked" type="checkbox" @click.prevent v-model="todo.completed" />
+          <div class="todo-title">{{ todo.title }}</div>
+          <button class="todo-favourite" :class="favourites.includes(todo.id.toString()) ?  'todo-favourite-checked' : '' " @click="toggleFavorite(todo.id)">
+            <span v-if="favourites.includes(todo.id.toString())">Favourite</span>
+            <span v-else>Add to favourite</span>
+          </button>
+        </div>
       </div>
     </div>
 
-    <form class="create-user-form">
+    <form class="user-form">
       <h3>USER</h3>
       <div class="form-group">
         <label for="userName" class="fixed-label">Name:</label>
@@ -243,7 +245,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.todos-container {
+.main-container {
   border-radius: 5px;
   background-color: #f0f0f0;
   display: flex;
@@ -284,7 +286,7 @@ export default {
   }
 }
 
-.create-user-form {
+.user-form {
   margin-right: 20px;
 
 }
@@ -296,7 +298,7 @@ export default {
 }
 
 .create-todo,
-.todo-list {
+.todo-container {
   @media screen and (max-width: 968px) {
     order:2
   }
@@ -318,7 +320,7 @@ input {
   border-radius: 3px;
 }
 
-.todo-list {
+.todo-container {
   display: flex;
   flex-direction: column;
 }
