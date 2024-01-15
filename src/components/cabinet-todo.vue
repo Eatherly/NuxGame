@@ -198,7 +198,7 @@ export default {
         });
 
         const responseData = await response.json();
-        responseData.userId = user.id;
+        responseData.userId = newTodo.userId;
         responseData.completed = false;
         todos.value.push(responseData);
         window.scrollTo({
