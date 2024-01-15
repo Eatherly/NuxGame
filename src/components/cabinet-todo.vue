@@ -207,7 +207,6 @@ export default {
           top: document.body.scrollHeight,
           behavior: "smooth",
         });
-        localStorage.setItem('newToDoId', responseData.id);
         newTodo.userId = null;
         newTodo.title = ''
       } catch (error) {
